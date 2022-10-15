@@ -31,7 +31,8 @@ Here is my chart to prove that:
 
 ### Appendix A
 #### This is where your python script will go. Your code should be commented and well organized.
-#%%
+
+ #%%
 import pandas as pd
 import altair as alt
 import numpy as np
@@ -47,26 +48,26 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import make_classification
 from sklearn.metrics import accuracy_score, recall_score, precision_score
 alt.data_transformers.enable('json')
-#%%
-#Import data
+ #%%
+ #Import data
 dwellings_denver = pd.read_csv("https://github.com/byuidatascience/data4dwellings/raw/master/dat
 dwellings_ml = pd.read_csv("https://github.com/byuidatascience/data4dwellings/raw/master/data-ra
 dwellings_neighborhoods_ml = pd.read_csv("https://github.com/byuidatascience/data4dwellings/raw/
-#%%
-#Split data
-#X, y = load_iris(return_X_y=True)
-X = dwellings_ml.drop(['before1980', 'yrbuilt','parcel'], axis = 1 )
-y = dwellings_ml.filter(regex = 'before1980')
-#X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=76)
+ #%%
+ #Split data
+ #X, y = load_iris(return_X_y=True)
+ X = dwellings_ml.drop(['before1980', 'yrbuilt','parcel'], axis = 1 )
+ y = dwellings_ml.filter(regex = 'before1980')
+ #X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=76)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.34, random_state=76)
 p = y_test.head(10).mean()
 print(p)
-#%%
-#Stories
-#Sales price
-#Square footage
-#Garage size
-#Bathrooms
+ #%%
+ #Stories
+ #Sales price
+ #Square footage
+ #Garage size
+ #Bathrooms
 chart1 = (alt.Chart(dwellings_denver.query('yrbuilt > 0 and numbdrm > 0'))
 .encode(
 alt.X('numbdrm', title = "Number of bedrooms"),
